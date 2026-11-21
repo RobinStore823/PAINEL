@@ -1,0 +1,22 @@
+CORRECAO SEGURA DO PAINEL — 20/11/2026
+
+O que mudou:
+- Texto da fila esclarece que mostra somente pedidos do codigo de acesso consultado.
+- Mensagem de link duplicado esclarece que pode existir em pedido antigo vinculado a outro codigo.
+- Aviso de verificacao externa informa que a integracao nao esta conectada.
+- Nova pagina /diagnostico-fila.html exibe contagem geral via API EXISTENTE, somente leitura.
+- Link para o diagnostico no painel-robo.html.
+
+O que NAO mudou:
+- Nenhuma tabela, registro, codigo de acesso, credencial, PDF ou link foi excluido/alterado.
+- Nenhuma Edge Function, regra de duplicidade, CORS ou dominio foi alterado.
+- Nao conecta o bot a SheerID nem simula aprovacao.
+
+ANTES DE PUBLICAR:
+1. Faca backup do deploy atual do Netlify.
+2. Se voce fez novas alteracoes no site apos receber o pacote original, NAO publique o ZIP completo por cima delas.
+3. Nesse caso, compare e mescle APENAS app.js, diagnostico-fila.html e a linha adicionada a painel-robo.html usando o pacote PATCH_APENAS.
+4. Se estiver usando o pacote original sem novas modificacoes, pode publicar o ZIP completo.
+5. Acesse /diagnostico-fila.html e confirme os contadores (ou a mensagem de erro de permissao).
+
+LIMITACAO: corrigir textos e visibilidade da fila NAO torna um link verdadeiramente diferente. O banco continua preservando e bloqueando duplicatas.

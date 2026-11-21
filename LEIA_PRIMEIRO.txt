@@ -1,0 +1,24 @@
+ATUALIZAÇÃO — LAELE FORMTEST V2 (HOMOLOGAÇÃO)
+
+Este ZIP contém uma cópia do site estático anterior com o módulo de homologação.
+ANTES DE SUBIR, mantenha um backup do deploy atual.
+
+PAINEL ANTERIOR: /painel-robo.html
+PAINEL DO BOT DE TESTES: /homologacao/
+FORMULÁRIO DEMONSTRATIVO DO DOMÍNIO: /homologacao/formulario-teste.html
+
+Atenção: o site Netlify NÃO executa Playwright sozinho. É preciso publicar o backend do ZIP completo em um servidor Docker e informar sua URL HTTPS em homologacao/config.js.
+
+A aba “Biblioteca de PDF-base” do painel antigo armazena originais sem modificá-los. O bot usa SOMENTE o modelo fictício ATIVO na aba “Modelos PDF” dentro de /homologacao/. O padrão do bot é MODELO_NOME_FICTICIO.pdf e muda apenas o campo full_name em cópias.
+
+No Supabase existente, já foram criadas tabelas bot_test_*, bucket privado e acesso administrativo, mas ainda falta o backend Docker e comprovar controle de laele.com.br via TXT.
+
+NÃO é integração com SheerID nem com verificadores de terceiros.
+
+Para detalhes, consulte README.md no ZIP completo.
+\n\nVERSÃO CONECTADA: o arquivo homologacao/config.js já aponta para
+https://formtest-laele-api.onrender.com
+Publique o conteúdo deste ZIP no Netlify, após guardar backup do site atual.
+Abra /homologacao/ e faça login com o administrador Supabase.
+O domínio laele.com.br deve ser validado por TXT DNS antes de testes remotos.
+Apenas formulários de homologação com marcadores explícitos serão automatizados.

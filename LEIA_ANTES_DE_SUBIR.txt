@@ -1,0 +1,12 @@
+PAINEL COMPLETO PRONTO PARA NETLIFY
+
+Este ZIP ja contem TODOS os arquivos originais do seu site (index.html, app.js, app.css, painel-robo.html, etc.)
+ja mesclados com a integracao SheerID via Netlify Functions e o seu Supabase ja configurado no config.public.js.
+
+O QUE FALTA FAZER (APENAS 2 PASSOS):
+1. Suba o conteudo deste ZIP no seu repositorio Git conectado ao Netlify (para o Netlify ativar a pasta netlify/functions).
+   - Se voce usar apenas o Netlify Drop (arrastar pasta sem Git), o site abre normalmente sem erro 404,
+     mas a funcao /.netlify/functions/sheerid so fica ativa quando o deploy e feito por repositorio conectado.
+2. No painel do Netlify, em Site configuration -> Environment variables, adicione:
+   - SUPABASE_URL = https://dmlrkfbutwekzazjawub.supabase.co
+   - SUPABASE_SERVICE_KEY = (sua chave service_role do Supabase)

@@ -1,0 +1,24 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Verification Desk | Robô</title><link rel="stylesheet" href="./svd.css"></head><body>
+<main class="shell">
+<header class="head"><div><span class="tag">Módulo compatível com o site atual</span><h1>🤖 Painel do Robô</h1><p>Fila real no Supabase, com segurança e histórico de cada etapa.</p></div><a class="link" href="./editor-pdf.html">Abrir editor de PDF ↗</a><a class="link" href="./homologacao/">Abrir Bot de Testes / PDF Fictício ↗</a></header>
+<p><a class="link" href="./diagnostico-fila.html">Consultar contagem global da fila (somente leitura) ↗</a></p>
+<div class="notice warn">Integração externa configurada via <b>Netlify Functions</b> (<code>/.netlify/functions/sheerid</code>). Use o botão <b>Sincronizar SheerID</b> ou <b>Processar a fila agora</b> para atualizar o status.</div>
+<section class="panel"><h2>🧪 Bot de homologação e PDF fictício</h2><p>Este módulo gera identidades de teste, preenche o formulário marcado como homologação, cria PDF com o mesmo nome e exibe o histórico das etapas. O modelo ativo fica dentro do próprio painel de testes; o original é preservado.</p><div class="toolbar"><a class="btn" href="./homologacao/">Abrir painel de testes</a><a class="btn secondary" href="./homologacao/formulario-teste.html">Ver formulário de demonstração</a></div></section>
+<section id="config-warning" class="panel hidden"><h2>Falta a chave pública</h2><p>Abra <code>config.public.js</code> e adicione a chave publishable/anon do seu Supabase. Nunca use a secret/service_role.</p></section>
+<section id="login-panel" class="panel hidden"><h2>Entrar como administrador</h2><form id="login-form"><div class="grid2"><div><label>E-mail do administrador</label><input type="email" id="email" required autocomplete="username"></div><div><label>Senha</label><input type="password" id="password" required autocomplete="current-password"></div></div><div class="toolbar"><button class="btn" type="submit">Entrar</button></div></form><div class="muted" id="login-status"></div></section>
+<section id="main-panel" class="hidden"><div class="toolbar"><button id="run" class="btn">Processar a fila agora</button><button id="refresh" class="btn secondary">Atualizar</button><button id="logout" class="btn outline">Sair</button><span id="user-display" class="muted"></span></div>
+<div id="status" class="notice">Carregando...</div><div class="cols"><div class="stat"><b id="s-queued">0</b><span>Na fila</span></div><div class="stat"><b id="s-processed">0</b><span>Links analisados, aguardando integração</span></div><div class="stat"><b id="s-other">0</b><span>Erros, revisões ou cancelamentos</span></div></div>
+<section class="panel" id="pdf-base-section" aria-labelledby="pdf-base-heading">
+  <h2 id="pdf-base-heading">📄 Biblioteca de PDF-base</h2>
+  <p>Armazene um PDF original em uma área privada do Supabase. Ele permanece <strong>inalterado</strong> entre execuções e só pode ser substituído manualmente por um administrador.</p>
+  <div class="notice warn"><strong>Importante:</strong> esta biblioteca não troca nomes em comprovantes institucionais e não envia arquivos à SheerID. Para gerar documentos com nomes fictícios, use modelos de homologação claramente marcados como TESTE na área de <a class="link" href="./homologacao/">Homologação</a>.</div>
+  <form id="pdf-base-form">
+    <label for="pdf-base-file">Selecionar PDF-base (até 10 MB)</label>
+    <input id="pdf-base-file" type="file" accept=".pdf,application/pdf" required>
+    <div class="toolbar"><button class="btn" id="pdf-base-upload" type="submit">Salvar PDF-base</button><button class="btn secondary" id="pdf-base-download" type="button" disabled>Baixar original</button><button class="btn outline" id="pdf-base-remove" type="button" disabled>Remover modelo</button></div>
+  </form>
+  <div id="pdf-base-status" role="status" aria-live="polite" class="muted">Consultando biblioteca privada...</div>
+</section>
+<section class="panel"><h2>Pedidos</h2><p class="muted">A tabela de resultados oficiais do site não é alterada por este módulo.</p><div id="jobs"></div></section></section>
+<footer>Student Verification Desk — módulo administrativo. Não envie documentos confidenciais no chat ou em logs.</footer>
+</main><script src="./config.public.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="./painel-robo.js"></script></body></html>
